@@ -1,0 +1,56 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Index</title>
+</head>
+<body>
+    <h1>Welcome to the Index page</h1>
+    <form method="get">
+        <button type="submit">Get Weather Forecasts</button>
+    </form>
+
+    @if (Model.WeatherForecasts != null)
+    {
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Temperature (C)</th>
+                    <th>Temperature (F)</th>
+                    <th>Summary</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var weatherForecast in Model.WeatherForecasts)
+                {
+                    <tr>
+                        <td>@weatherForecast.Date</td>
+                        <td>@weatherForecast.TemperatureC</td>
+                        <td>@weatherForecast.TemperatureF</td>
+                        <td>@weatherForecast.Summary</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+    @section scripts {
+        <script src="~/js/site.js"></script>
+    }
+
+    @if (!string.IsNullOrEmpty(Model.Jwt))
+    {
+        <p>Your JWT is @Model.Jwt</p>
+    }
+    else
+    {
+        <p>No JWT found.</p>
+    }
+</body>
+</html>
