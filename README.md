@@ -9,40 +9,53 @@ This article will provide a comprehensive understanding of JWTs and how they can
 We will be using a weather forecast API that comes with ASP.NET Core 7. We will create an ASP.NET Core web application that will interact with the API using Razor pages and JWT for authentication and authorization. Our web application will use JWT to authenticate users and provide them with access to the weather forecast data. By the end of this tutorial, you will have a working web application that demonstrates the use of JWT for secure authentication and authorization, as well as how to interact with an API using ASP.NET Core. So let's get started!
 
 - Create a folder
-![image.png](/.attachments/image-5ee02f88-af88-43db-bfd9-28e9d835f674.png)
+
+![image](https://user-images.githubusercontent.com/94803911/220209259-1012a779-874d-4ec7-b9b2-bc3e99ac5b22.png)
 
 - Open Visual Studio and select ASP.NET Core Web App
-![image.png](/.attachments/image-f0cb80d2-2f0a-41e4-99c4-2c377bae434a.png)
+
+![image](https://user-images.githubusercontent.com/94803911/220209276-a188b1f7-a644-43f6-b05a-9db13f945c29.png)
 
 - Ensure your path reflects the path of the folder you just made
-![image.png](/.attachments/image-6acd6baf-120d-4817-b9d3-5f1ba8e71f83.png)
+
+![image](https://user-images.githubusercontent.com/94803911/220209306-d48e8ac3-8ef6-4462-88e7-b66da89db7de.png)
 
 - Next, you want to add Individual Accounts
-![image.png](/.attachments/image-27fdfe79-3030-441d-80b5-042fe3cc5a6f.png)
+
+![image](https://user-images.githubusercontent.com/94803911/220209353-79c9c749-594c-41ac-b7a2-0b3f4e215593.png)
 
 - You will need a few packages to begin. Go to packages and then manage Nuget packages
-![image.png](/.attachments/image-e3daad0d-2d3a-4285-a7b1-67322131b0c9.png) 
+
+![image](https://user-images.githubusercontent.com/94803911/220209401-8b7bd35f-cf4f-4c04-afaa-aef8fa828b31.png) 
 
 - Install JwtBearer 
-![image.png](/.attachments/image-34a3d8ba-1dde-4e6c-9135-bec42447b6c9.png)
+
+![image](https://user-images.githubusercontent.com/94803911/220209431-ad81f8c9-5391-4066-942f-0b062c764de2.png)
 
 - Install tokens.jwt
-![image.png](/.attachments/image-9f5b800b-331a-47d6-a34d-68d47451720a.png)
+
+![image](https://user-images.githubusercontent.com/94803911/220209460-7970aab2-0653-4323-9da5-ab3ab1a811fc.png)
 
 - Go to the areas folder and delete the identity file
-![image.png](/.attachments/image-4889f7a5-bd80-4eed-9f76-11ce0ff28fa4.png)
+
+![image](https://user-images.githubusercontent.com/94803911/220209488-e43d1e42-3f40-412f-91b3-b4335d3e3a13.png)
 
 - Once deleted, right-click the Areas folder > Add > Add New Scaffolded Item
 You are going to want to select Identity
-![image.png](/.attachments/image-c51116b0-6c64-4582-91ff-cec6c7bc4030.png)
+
+![image](https://user-images.githubusercontent.com/94803911/220209517-e7c69af8-b4ce-4b82-bb84-8f38155b2522.png)
 
 - Once the Add Identity Box appears, check the following boxes
-![image.png](/.attachments/image-ab8559c0-1e09-4c65-8d98-80217ba039ea.png)
 
-- In that same add Identity popup, you must click the drop-down for the Data context class and select ApplicationDbContext![image.png](/.attachments/image-d73ca2c9-6b1b-41eb-a8fe-b8747a1fbcde.png)
+![image](https://user-images.githubusercontent.com/94803911/220209574-6c4ed8d2-508b-44ca-b0bc-9b2f8a16bd85.png)
+
+- In that same add Identity popup, you must click the drop-down for the Data context class and select ApplicationDbContext
+
+![image](https://user-images.githubusercontent.com/94803911/220209640-d047c976-dea4-4b2c-aeac-8434f868089d.png)
 
 - Select the Login page
-![image.png](/.attachments/image-c2123c4d-f4a3-4d1d-9563-f0c7734ba641.png)
+
+![image](https://user-images.githubusercontent.com/94803911/220209656-cb3f1c31-841d-41ef-8362-7c46cb3ea1b0.png)
 
 - The login page model is going to be what generates the JSON Web Tokens. What this does is allow all users who log in to have a JSON Web Token. 
 
@@ -227,7 +240,8 @@ namespace Demo.Web.Areas.Identity.Pages.Account
 
 ```
 - Next, navigate to Index.cshtml.cs
-![image.png](/.attachments/image-4db77af9-1731-472d-a6c3-2043084533a4.png)
+
+![image](https://user-images.githubusercontent.com/94803911/220209683-c9af417f-eb86-436e-9ea8-99f2efd16e8d.png)
 
 - Paste the following code into index model
 ```
@@ -258,7 +272,8 @@ namespace Demo.Web.Pages
 ```
 
 - Now go to the index.html page
-![image.png](/.attachments/image-8e7e3eb2-f099-409b-b60f-47b61fdd392c.png)
+
+![image](https://user-images.githubusercontent.com/94803911/220209694-e297c386-14eb-48d9-917a-ab668517455c.png)
 
 - Then paste the following code
 ```
@@ -308,16 +323,19 @@ namespace Demo.Web.Pages
 ```
 
 - To generate your own key, go here [https://8gwifi.org/jwsgen.jsp]()
-![image.png](/.attachments/image-3b9b402c-50ff-4579-a3d6-13efeacbb014.png)
+
+![image](https://user-images.githubusercontent.com/94803911/220209713-0ec6d0be-d938-4c67-8576-d157228a73d4.png)
 
   In this tutorial, we will be using HS256 and your secret that goes in JSON is "Shared Secret"
 
 - As a troubleshooting step, if you would like to confirm that everything is working you can use a token validator here [https://jwt.io/]() 
-![image.png](/.attachments/image-2ea66053-265a-4085-a01e-3b301c101486.png)
+
+![image](https://user-images.githubusercontent.com/94803911/220209729-5c602540-f38c-432a-b0b4-a18fb612b8ef.png)
   Above is an example of a valid Json web token. You can tell because it states signature verified. What I did to test if my generated shared secret was valid is place it in the bottom right section under verify signature. I then pasted the string of characters that was labeled as "Serialize" under the encoded section. What you will notice is that the payload data and header sections reflect what the other website said. This means it worked!
 
 - Here is an example of an invalid signature
-![image.png](/.attachments/image-aa15f783-46bb-4003-a77b-66c68c239b96.png)
+
+![image](https://user-images.githubusercontent.com/94803911/220209738-957da6c5-af67-49b5-8ed0-1d7e1ddae461.png)
 
 - Lastly, before starting the application, change your program.cs file so that it reflects the following code:
 ```
@@ -388,20 +406,24 @@ app.Run();
 ```
 
 - Start the application
-![image.png](/.attachments/image-ebdc6c07-3697-4ee9-a84a-8d86566603ac.png)
+
+![image](https://user-images.githubusercontent.com/94803911/220209757-ae0efd22-dec2-4650-881f-d5006f85ded3.png)
 
 - Your page should look like this
-![image.png](/.attachments/image-b8c506bc-c825-4c7e-b8c2-d6edc0b01eec.png)
+
+![image](https://user-images.githubusercontent.com/94803911/220209771-4e6b30c0-81da-48ae-90fb-c82446ba9976.png)
 
   Notice how the page states no JWT found. What I want you to do is test what you have done so far by registering an account and logging in.
 
 - A long string of characters appears! That string is your JSON Web Token for the user account you just made!
-![image.png](/.attachments/image-48d09000-6540-494a-b7ee-a2805622c4af.png)
+
+![image](https://user-images.githubusercontent.com/94803911/220209804-1d6b30a2-0706-4927-9ca6-678279adb3f8.png)
 
 - You are halfway done. Now we must set up the web API so that it can work with the Razor pages project. However, before we get ahead of ourselves. Let's finish the Razor pages Web App so that we no longer have to worry about it.
 
 - Create a folder called models and create a class called "WeatherForecast"
-![image.png](/.attachments/image-dfbe04d2-9770-4061-8d7c-215eb32699bf.png)
+
+![image](https://user-images.githubusercontent.com/94803911/220209846-3fd769cf-c408-432d-971f-e88f038a1811.png)
 
 - Place this code in your WeatherForecast class
 ```
@@ -622,25 +644,32 @@ app.Run();
 ```
 
 - Now that you are all done with the Web App you can move on to the Web API. Right-click on your solution and select add new project.
-![image.png](/.attachments/image-1d25c0c2-552f-467f-ac8f-c1a7239f8dde.png)
+
+![image](https://user-images.githubusercontent.com/94803911/220209864-41f5f7fa-3fcc-4f1f-bc89-8495187c1969.png)
 
 - Select ASP.NET Core Web API
-![image.png](/.attachments/image-9f21f655-3452-4d0c-9c1b-9b6acae9615a.png)
+
+![image](https://user-images.githubusercontent.com/94803911/220209870-8fb545d0-dba2-4abd-a6be-6a323ddee588.png)
 
 - Name your API
-![image.png](/.attachments/image-d95bfcff-d71d-46bf-bbcd-b3747915370c.png)
+
+![image](https://user-images.githubusercontent.com/94803911/220209880-ba67915b-9eda-49bb-9912-2fe0c6e3e23a.png)
 
 - Leave the default settings and select create (You may get a docker warning, if so, just click okay for now)
-![image.png](/.attachments/image-60163337-e626-4797-94ec-f7d02bcbd479.png)
+
+![image](https://user-images.githubusercontent.com/94803911/220209900-cb2e066f-e440-40bc-998e-b87cea563787.png)
 
 - You will need a few packages to begin. Go to packages and then manage Nuget packages
-![image.png](/.attachments/image-e3daad0d-2d3a-4285-a7b1-67322131b0c9.png) 
 
-- Install JwtBearer 
-![image.png](/.attachments/image-34a3d8ba-1dde-4e6c-9135-bec42447b6c9.png)
+![image](https://user-images.githubusercontent.com/94803911/220209907-6f42e36c-1f4b-4665-8cca-026aa5606c0f.png)
+
+- Install JwtBearer
+
+![image](https://user-images.githubusercontent.com/94803911/220209915-b9827a7f-2bc6-4a75-9ae0-ed5612671c99.png)
 
 - Install tokens.jwt
-![image.png](/.attachments/image-9f5b800b-331a-47d6-a34d-68d47451720a.png)
+
+![image](https://user-images.githubusercontent.com/94803911/220209930-0169764e-b3f6-4b64-b13b-d0f6710a150e.png)
 
 
 - First, go into appsettings.json and change it to contain your key:
@@ -769,10 +798,12 @@ namespace Demo.API.Controllers
 }
 ```
 - To make it easier to run both projects at the same time, right click the solution and select properties
-![image.png](/.attachments/image-a9b23ee6-c1ae-45cc-a3b8-22d31dce325e.png)
+
+![image](https://user-images.githubusercontent.com/94803911/220209941-c4fc88dc-1074-41fa-a11a-d99face7d42c.png)
 
 - You will see a screen like below and will need to change from the option of a single startup project to multiple startup projects and then change the action to "Start"
-![image.png](/.attachments/image-b9d28c54-b7a3-4049-ae5f-457da1a8e984.png)
+
+![image](https://user-images.githubusercontent.com/94803911/220209947-a783786b-0f5f-4263-b75e-5f764a7335e7.png)
 
   Once done select apply and okay
 
@@ -872,16 +903,21 @@ namespace Demo.API.Controllers
 }
 ```
 - Select Start
-![image.png](/.attachments/image-8eddf567-7f5a-4d34-ad9e-d34bce808ab3.png)
+
+![image](https://user-images.githubusercontent.com/94803911/220209963-137bad8e-bd8b-484f-9a11-b464007e62e3.png)
 
 - Provided everything is correct, you will have two websites that launch. Your web API will look like this: 
-![image.png](/.attachments/image-6103d747-bf24-43bf-b800-a1369758c138.png)
+
+![image](https://user-images.githubusercontent.com/94803911/220209973-1a788853-5a07-4efc-af86-9dace6288867.png)
 
   And your Web App will look like this: 
-  ![image.png](/.attachments/image-83c5b4ad-ec40-4473-b9a8-874fad13e856.png)
+
+![image](https://user-images.githubusercontent.com/94803911/220209988-29f974d0-d07c-4911-9f13-364f7fe12dc9.png)
 
   There are many ways to test that it is working and is secure. The most simple way is to open an incognito browser and paste your web application URL into the search bar.
-![image.png](/.attachments/image-66afa613-af8e-401c-b8f3-e9cc8352c1e8.png)
+ 
+![image](https://user-images.githubusercontent.com/94803911/220210006-e693a574-3d1d-4af0-97b6-1e7b6a9e76cc.png)
+
 When there is no user logged in they do not have a JWT and because they have no JWT they cannot see the weather information.
 
   The end
